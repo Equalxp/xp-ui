@@ -3,6 +3,7 @@ import { App } from "vue";
 
 import XpButton from './button/index.vue'
 
+// 支持组件的单一引入
 export {
   XpButton,
 }

@@ -47,16 +47,17 @@ const clientWidth = inject<Ref<number>>("clientWidth");
 const toggleAside = () => {
   asideVisible!.value = !asideVisible!.value;
 };
-// 计算属性 侧边栏样式
+// 计算属性 侧边栏拉出收回
 const asideStyle = computed(() => {
   return {
     left: asideVisible?.value ? "0px" : "-272px"
   };
 })
 
-// 样式
+// 样式改变
 const toggleAsidStyle = computed(() => {
   return {
+    // 右箭头反转
     left: asideVisible!.value ? "272px" : "0px",
     transform: asideVisible!.value
       ? "rotate(180deg) translateX(50%)"

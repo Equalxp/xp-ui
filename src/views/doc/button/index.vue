@@ -1,29 +1,60 @@
 <template>
-  <div>
-    <!-- 由不同侧边栏 点击展示不同 路由展示页面 -->
-    <!-- <Button theme="default" />
-    <Button theme="primary" />
-    <Button theme="info" />
-    <Button theme="success" />
-    <Button theme="warning" />
-    <Button theme="error" /> -->
+  <div class="button-doc-wrapper">
+    <h1>Button 按钮</h1>
+    <p>常用的操作按钮。</p>
     <!-- Preview接收参数为组件的实例对象 -->
-    <Preview :component="ButtonPreview1" />
+    <div class="preview-wrapper">
+      <Preview :component="ButtonPreview1" />
+      <Preview :component="ButtonPreview2" />
+      <Preview :component="ButtonPreview3" />
+      <Preview :component="ButtonPreview4" />
+      <Preview :component="ButtonPreview5" />
+      <Doc title="属性" type="prop" :body="propDoc" />
+      <Doc title="插槽" type="slot" :body="slotDoc" />
+      <PrevAndNext
+        :prev="{ path: '/doc/avatar', name: 'Avatar 头像' }"
+        :next="{ path: '/doc/divider', name: '分割线 Divider' }"
+      />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-// import Button from '../../../lib/button/index.vue'
-import ButtonPreview1 from './ButtonPreview1.preview.vue'
 import Preview from '../../../components/Preview.vue';
-import { onMounted } from 'vue';
-onMounted(() => {
-  console.log('Preview',Preview);
-});
+import ButtonPreview1 from './ButtonPreview1.preview.vue'
+import ButtonPreview2 from './ButtonPreview2.preview.vue';
+import ButtonPreview3 from './ButtonPreview3.preview.vue';
+import ButtonPreview4 from './ButtonPreview4.preview.vue';
+import ButtonPreview5 from './ButtonPreview5.preview.vue';
+import PrevAndNext from '../../../components/PrevAndNext.vue'
+import Doc from '../../../components/Doc.vue'
+
+// 解释的区域
+// 1.属性
+const propDoc = [
+  ['theme','类型','string',
+    "default / primary / info / success / warning / error",
+    "default",
+  ],
+  ["dashed", "是否虚线为按钮", "boolean", "-", "false"],
+  ["size", "大小", "string", "small / default / large", "default"],
+  ["round", "是否为圆角按钮", "boolean", "-", "false"],
+  ["circle", "是否为圆形按钮", "boolean", "-", "false"],
+  ["disabled", "是否禁用", "boolean", "-", "fasle"],
+  ["loading", "是否显示加载中", "boolean", "-", "fasle"],
+  ["icon-placement", "按钮中图标的位置", "string", "left / right", "left"],
+]
+const slotDoc = [
+  ["default", "自定义默认内容"],
+  ["icon", "按钮的图标"],
+];
 </script>
 
 <style lang="scss">
-.xp-button + .xp-button {
-  margin-left: 20px;
+.button-doc-wrapper {
+  .xp-button {
+    margin-right: 8px;
+    margin-top: 8px;
+  }
 }
 </style>

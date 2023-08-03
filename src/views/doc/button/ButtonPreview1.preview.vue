@@ -1,4 +1,4 @@
-<!-- <preview>基础</preview>
+<preview>基础</preview>
 <template>
   <div style="margin: 10px 0px; width: 100%">
     <xp-button theme="default">默认按钮</xp-button>
@@ -62,15 +62,5 @@
 </template>
 
 <script setup lang="ts">
-// import Button from "../../../lib/button/index.vue";
 import { Add16Regular } from "@vicons/fluent";
-</script>
- -->
-
-<preview>基础示例</preview>
-<template>
-  <xp-button></xp-button>
-</template>
- 
-<script setup lang="ts">
 </script>

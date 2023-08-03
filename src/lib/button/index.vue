@@ -1,20 +1,24 @@
 <template>
-  <!-- 封装的button组件 加xp作为前缀 避免样式重叠 -->
   <button class="xp-button" :class="classes">
     <span v-if="loading" class="xp-loadingIndicator"></span>
-    <!-- {{ theme 写的是要在按钮里显示的文字 所以得用slot }} -->
-    <slot>{{ theme }}</slot>
+    <!-- 图标 -->
+    <div v-if="iconPlacement === 'left' && solts.icon" class="slot-icon-left">
+      <slot name="icon"></slot>
+    </div>
+    <!-- button里面显示文字传 用slot -->
+    <slot></slot>
+    <!-- 图标 -->
+    <div v-if="iconPlacement === 'right' && solts.icon" class="slot-icon-right">
+      <slot name="icon"></slot>
+    </div>
   </button>
 </template>
-
 <script setup lang="ts">
-import { computed } from 'vue';
-// 
+import { computed, useSlots } from "vue";
 const props = defineProps({
-  // 接收的props参数进行类型的限定
+  // props传的值进行类型限定和默认值的设置
   theme: {
     type: String,
-    // 设置默认值 防止button里没有写theme的情况
     default: "default",
   },
   dashed: {
@@ -29,6 +33,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  circle: {
+    type: Boolean,
+    default: false,
+  },
   disabled: {
     type: Boolean,
     default: false,
@@ -37,23 +45,22 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  iconPlacement: {
+    type: String,
+    default: "left",
+  },
 });
-console.log(props.theme);
 
-const { theme, dashed, size, round, disabled } = props;
-
-// 计算属性
+const { theme, dashed, size, round, disabled, circle } = props;
+const solts = useSlots();
 const classes = computed(() => {
+  // class样式数组 
   return {
-    // theme 颜色 根据传过来的props中的 theme值 改变类名改变样式
     [`xp-theme-${theme}`]: theme,
-    // dashed 边框线
-    [`xp-theme-dashed`]: dashed,
-    // 大小
-    [`xp-size-${size}`]: size,
-    // 圆角
+    [`is-dashed`]: dashed,
+    [`xp-button-${size}`]: size,
     [`is-round`]: round,
-    // 禁止选中
+    [`is-circle`]: circle,
     [`is-disabled`]: disabled,
   };
 });
@@ -65,9 +72,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-$h-default: 32px;
-$h-small: 20px;
+<style lang="scss">
+$h-default: 40px;
+$h-small: 32px;
 $h-large: 48px;
 $white: #fff;
 $default-color: #333;
@@ -77,18 +84,19 @@ $success-color: #85ce61;
 $warning-color: #f0a020;
 $error-color: #d03050;
 $grey: grey;
- 
+
 $default-border-color: #d9d9d9;
- 
+
 $radius: 3px;
 $green: #18a058;
- 
+
 .xp-button {
-  // 共同的样式
+  // button 按钮共有的属性
   box-sizing: border-box;
   height: $h-default;
+  font-size: 14px;
   background-color: #fff;
-  padding: 0 12px;
+  padding: 12px 20px;
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
@@ -100,57 +108,65 @@ $green: #18a058;
   color: $default-color;
   border: 1px solid $default-border-color;
   user-select: none;
- 
+
   &:focus {
     outline: none;
   }
- 
+
   &::-moz-focus-inner {
     border: 0;
   }
- 
-  &.xp-size-large {
-    font-size: 24px;
-    height: $h-large;
-    padding: 0 16px;
+
+  // 
+  &.is-circle.xp-button-default {
+    border-radius: 100%;
+    height: $h-default;
+    width: $h-default;
   }
-  &.xp-size-small {
-    font-size: 12px;
+  &.is-circle.xp-button-small {
+    border-radius: 100%;
     height: $h-small;
-    padding: 0 8px;
+    width: $h-small;
   }
- 
-  &.is-round.xp-size-default {
+  &.is-circle.xp-button-large {
+    border-radius: 100%;
+    height: $h-large;
+    width: $h-large;
+  }
+  // 圆+大中小
+  &.is-round.xp-button-default {
     border-radius: calc($h-default / 2);
   }
-  &.is-round.xp-size-large {
+  &.is-round.xp-button-large {
     border-radius: calc($h-large / 2);
   }
-  &.is-round.xp-size-small {
+  &.is-round.xp-button-small {
     border-radius: calc($h-small / 2);
   }
-  // xp-theme-xxxx 不同的xxx对应的样式
+
+  // hover + active + dashed + disabled
   &.xp-theme-default {
-    // 悬浮的样式 变浅(白色不变)
     &:hover {
       color: $green;
       border-color: $green;
+
       > .xp-loadingIndicator {
         border-style: dashed;
         border-color: $green $green $green transparent;
       }
     }
-    // 点击下去的样式 变深色
     &:active {
+      // 选中点击 加深颜色
       color: darken($green, 20%);
       border-color: darken($green, 20%);
+
       > .xp-loadingIndicator {
         border-style: dashed;
         border-color: darken($green, 20%) darken($green, 20%)
           darken($green, 20%) transparent;
       }
     }
-    &.xp-theme-dashed {
+    &.is-dashed {
       border-style: dashed;
     }
     > .xp-loadingIndicator {
@@ -162,18 +178,19 @@ $green: #18a058;
     background-color: $primary-color;
     border-color: $primary-color;
     color: $white;
- 
-    //变浅
+
     &:hover {
+      // 悬浮变浅
       background: lighten($primary-color, 20%);
       border-color: lighten($primary-color, 20%);
     }
-    //变深
     &:active {
+      // 选中变深 
       background-color: darken($primary-color, 20%);
       border-color: darken($primary-color, 20%);
     }
- 
+
+    // 禁用
     &.is-disabled {
       cursor: not-allowed;
       background: lighten($primary-color, 20%);
@@ -183,12 +200,12 @@ $green: #18a058;
         border-color: lighten($primary-color, 20%);
       }
     }
- 
-    &.xp-theme-dashed {
+
+    &.is-dashed {
       border-style: dashed;
       background-color: $white !important;
       color: $primary-color;
- 
+
       > .xp-loadingIndicator {
         border-style: dashed;
         border-color: $primary-color $primary-color $primary-color transparent;
@@ -207,7 +224,7 @@ $green: #18a058;
       background-color: darken($info-color, 20%);
       border-color: darken($info-color, 20%);
     }
- 
+
     &.is-disabled {
       cursor: not-allowed;
       background: lighten($info-color, 20%);
@@ -217,12 +234,12 @@ $green: #18a058;
         border-color: lighten($info-color, 20%);
       }
     }
- 
-    &.xp-theme-dashed {
+
+    &.is-dashed {
       border-style: dashed;
       background-color: $white !important;
       color: $info-color;
- 
+
       > .xp-loadingIndicator {
         border-style: dashed;
         border-color: $info-color $info-color $info-color transparent;
@@ -241,7 +258,7 @@ $green: #18a058;
       background-color: darken($success-color, 20%);
       border-color: darken($success-color, 20%);
     }
- 
+
     &.is-disabled {
       cursor: not-allowed;
       background: lighten($success-color, 20%);
@@ -251,12 +268,12 @@ $green: #18a058;
         border-color: lighten($success-color, 20%);
       }
     }
- 
-    &.xp-theme-dashed {
+
+    &.is-dashed {
       border-style: dashed;
       background-color: $white !important;
       color: $success-color;
- 
+
       > .xp-loadingIndicator {
         border-style: dashed;
         border-color: $success-color $success-color $success-color transparent;
@@ -275,7 +292,7 @@ $green: #18a058;
       background-color: darken($warning-color, 20%);
       border-color: darken($warning-color, 20%);
     }
- 
+
     &.is-disabled {
       cursor: not-allowed;
       background: lighten($warning-color, 20%);
@@ -285,12 +302,12 @@ $green: #18a058;
         border-color: lighten($warning-color, 20%);
       }
     }
- 
-    &.xp-theme-dashed {
+
+    &.is-dashed {
       border-style: dashed;
       background-color: $white !important;
       color: $warning-color;
- 
+
       > .xp-loadingIndicator {
         border-style: dashed;
         border-color: $warning-color $warning-color $warning-color transparent;
@@ -309,7 +326,7 @@ $green: #18a058;
       background-color: darken($error-color, 20%);
       border-color: darken($error-color, 20%);
     }
- 
+
     &.is-disabled {
       cursor: not-allowed;
       background: lighten($error-color, 20%);
@@ -319,18 +336,31 @@ $green: #18a058;
         border-color: lighten($error-color, 20%);
       }
     }
- 
-    &.xp-theme-dashed {
+
+    &.is-dashed {
       border-style: dashed;
       background-color: $white !important;
       color: $error-color;
- 
+
       > .xp-loadingIndicator {
         border-style: dashed;
         border-color: $error-color $error-color $error-color transparent;
       }
     }
   }
+
+  // 大 小
+  &.xp-button-large {
+    font-size: 24px;
+    height: $h-large;
+    padding: 0 16px;
+  }
+  &.xp-button-small {
+    font-size: 12px;
+    height: $h-small;
+    padding: 0 8px;
+  }
+  // 正在加载 loading
   > .xp-loadingIndicator {
     width: 14px;
     height: 14px;
@@ -342,8 +372,14 @@ $green: #18a058;
     border-width: 2px;
     animation: xp-spin 1s infinite linear;
   }
+  > .slot-icon-left {
+    margin-right: 5px;
+  }
+  > .slot-icon-right {
+    margin-left: 5px;
+  }
 }
- 
+
 @keyframes xp-spin {
   0% {
     transform: rotate(0deg);

@@ -51,7 +51,7 @@ const router = useRouter()
 
 const linkTo = (params:string) => {
   if (params === 'github') {
-    window.open('https://github.com')
+    window.open('https://github.com/Equalxp/xp-ui')
   } else if (params === 'getStart') {
     router.push({
       path: '/doc'
