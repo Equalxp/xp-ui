@@ -13,7 +13,7 @@
       <Doc title="插槽" type="slot" :body="slotDoc" />
       <PrevAndNext
         :prev="{ path: '/doc/avatar', name: 'Avatar 头像' }"
-        :next="{ path: '/doc/divider', name: '分割线 Divider' }"
+        :next="{ path: '/doc/icon', name: '图标 Icon' }"
       />
     </div>
   </div>
@@ -21,13 +21,13 @@
 
 <script lang="ts" setup>
 import Preview from '../../../components/Preview.vue';
+import PrevAndNext from '../../../components/PrevAndNext.vue'
+import Doc from '../../../components/Doc.vue'
 import ButtonPreview1 from './ButtonPreview1.preview.vue'
 import ButtonPreview2 from './ButtonPreview2.preview.vue';
 import ButtonPreview3 from './ButtonPreview3.preview.vue';
 import ButtonPreview4 from './ButtonPreview4.preview.vue';
 import ButtonPreview5 from './ButtonPreview5.preview.vue';
-import PrevAndNext from '../../../components/PrevAndNext.vue'
-import Doc from '../../../components/Doc.vue'
 
 // 解释的区域
 // 1.属性

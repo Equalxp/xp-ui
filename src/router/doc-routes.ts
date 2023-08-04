@@ -21,10 +21,26 @@ const docMenus = {
   ],
   通用组件: [
     {
+      path: 'avater',
+      name: '头像',
+      component:() => import('../views/doc/avater/index.vue')
+    },
+    {
       path: "button",
       name:'按钮',
       component: () => import("../views/doc/button/index.vue")
-    }
+    },
+    {
+      path: 'icon',
+      name: '图标',
+      component:() => import('../views/doc/icon/index.vue')
+    },
+    {
+      path: 'link',
+      name: '链接',
+      component:() => import('../views/doc/link/index.vue')
+    },
+
   ],
   数据录入组件: [],
   反馈组件: [],
