@@ -9,8 +9,8 @@
       <Doc title="属性" type="prop" :body="propDoc" />
       <Doc title="插槽" type="slot" :body="slotDoc" />
       <PrevAndNext
-        :prev="{ path: '/doc/divider', name: 'Divider 分割线' }"
-        :next="{ path: '/doc/icon', name: '图标 Icon' }"
+        :prev="{ path: '/doc/tag', name: '标签 Tag' }"
+        :next="{ path: '/doc/checkbox', name: '复选框 Checkbox' }"
       />
     </div>
   </div>

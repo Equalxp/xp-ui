@@ -1,12 +1,12 @@
 <template>
   <div class="xp-tag" :class="classes" :style="style">
     <!-- 文字说明 -->
-    <!-- <xp-ellipsis style="max-width: 10px;"> -->
     <xp-ellipsis>
+    <!-- <xp-ellipsis> -->
       <slot></slot>
     </xp-ellipsis>
     <!-- 图标 -->
-    <xp-icon :size="18" v-if="closable" @click="handleClose">
+    <xp-icon :size="18" v-if="closeable" @click="handleClose">
       <Close></Close>
     </xp-icon>
   </div>
@@ -79,14 +79,53 @@ export default {
   background-color: rgb(250, 250, 252);
   color: rgb(51, 54, 57);
   max-width: 100%;
-
+  // 边框 背景 字体颜色
   &.is-default {
-    // 边框 背景 字体颜色
     border: 1px solid rgb(239, 239, 245);
     background-color: rgb(250, 250, 252);
     color: rgb(51, 54, 57);
   }
-
+  &.is-success {
+    color: rgb(24, 160, 88);
+    background-color: rgba(24, 160, 88, 0.1);
+    border: 1px solid rgb(168, 219, 193);
+  }
+  &.is-success {
+    color: rgb(24, 160, 88);
+    background-color: rgba(24, 160, 88, 0.1);
+    border: 1px solid rgb(168, 219, 193);
+  }
+  &.is-warning {
+    color: rgb(240, 160, 32);
+    background-color: rgba(240, 160, 32, 0.12);
+    border: 1px solid rgb(249, 214, 159);
+  }
+  &.is-info {
+    color: rgb(32, 130, 240);
+    background-color: rgba(32, 130, 240, 0.1);
+    border: 1px solid rgb(172, 208, 249);
+  }
+  &.is-error {
+    color: rgb(208, 48, 80);
+    background-color: rgba(208, 48, 80, 0.08);
+    border: 1px solid rgb(241, 195, 204);
+  }
+  // 大小 字体大小
+  &.is-small {
+    font-size: 12px;
+    line-height: 14px;
+    height: 24px;
+  }
+  &.is-large {
+    height: 34px;
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .xp-icon {
+    cursor: pointer;
+  }
+  &.is-closeable {
+    padding-right: 3px;
+  }
 }
-
 </style>
