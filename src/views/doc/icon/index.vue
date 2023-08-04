@@ -40,7 +40,7 @@ const slotDoc = [
 
 <style scoped>
 .icon-doc-wrapper {
-  .jw-icon {
+  .xp-icon {
     margin-right: 8px;
     margin-top: 8px;
   }

@@ -117,7 +117,7 @@ $green: #18a058;
     border: 0;
   }
 
-  // 
+  // 圆+大中小
   &.is-circle.xp-button-default {
     border-radius: 100%;
     height: $h-default;
@@ -133,7 +133,7 @@ $green: #18a058;
     height: $h-large;
     width: $h-large;
   }
-  // 圆+大中小
+  // 圆角+大中小
   &.is-round.xp-button-default {
     border-radius: calc($h-default / 2);
   }
@@ -169,6 +169,13 @@ $green: #18a058;
     &.is-dashed {
       border-style: dashed;
     }
+    &.is-disabled {
+      cursor: not-allowed;
+      &:hover {
+        color: #333;
+        border-color: #d9d9d9;
+      }
+    }
     > .xp-loadingIndicator {
       border-style: dashed;
       border-color: $default-color $default-color $default-color transparent;
@@ -189,7 +196,6 @@ $green: #18a058;
       background-color: darken($primary-color, 20%);
       border-color: darken($primary-color, 20%);
     }
-
     // 禁用
     &.is-disabled {
       cursor: not-allowed;
@@ -200,7 +206,6 @@ $green: #18a058;
         border-color: lighten($primary-color, 20%);
       }
     }
-
     &.is-dashed {
       border-style: dashed;
       background-color: $white !important;
@@ -224,7 +229,6 @@ $green: #18a058;
       background-color: darken($info-color, 20%);
       border-color: darken($info-color, 20%);
     }
-
     &.is-disabled {
       cursor: not-allowed;
       background: lighten($info-color, 20%);
@@ -234,7 +238,6 @@ $green: #18a058;
         border-color: lighten($info-color, 20%);
       }
     }
-
     &.is-dashed {
       border-style: dashed;
       background-color: $white !important;
@@ -258,7 +261,6 @@ $green: #18a058;
       background-color: darken($success-color, 20%);
       border-color: darken($success-color, 20%);
     }
-
     &.is-disabled {
       cursor: not-allowed;
       background: lighten($success-color, 20%);
@@ -268,7 +270,6 @@ $green: #18a058;
         border-color: lighten($success-color, 20%);
       }
     }
-
     &.is-dashed {
       border-style: dashed;
       background-color: $white !important;
@@ -292,7 +293,6 @@ $green: #18a058;
       background-color: darken($warning-color, 20%);
       border-color: darken($warning-color, 20%);
     }
-
     &.is-disabled {
       cursor: not-allowed;
       background: lighten($warning-color, 20%);
@@ -302,7 +302,6 @@ $green: #18a058;
         border-color: lighten($warning-color, 20%);
       }
     }
-
     &.is-dashed {
       border-style: dashed;
       background-color: $white !important;
@@ -326,7 +325,6 @@ $green: #18a058;
       background-color: darken($error-color, 20%);
       border-color: darken($error-color, 20%);
     }
-
     &.is-disabled {
       cursor: not-allowed;
       background: lighten($error-color, 20%);
@@ -336,7 +334,6 @@ $green: #18a058;
         border-color: lighten($error-color, 20%);
       }
     }
-
     &.is-dashed {
       border-style: dashed;
       background-color: $white !important;

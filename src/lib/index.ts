@@ -9,10 +9,12 @@ import XpLink from './link/index.vue'
 export {
   XpButton,
   XpIcon,
+  XpLink
 }
 const components = [
   XpButton,
   XpIcon,
+  XpLink
 ]
 
 // 全局注册组件
