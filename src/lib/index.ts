@@ -7,11 +7,13 @@ import XpIcon from './icon/index.vue'
 import XpLink from './link/index.vue'
 // 支持组件的单一引入
 export {
+  XpAvter,
   XpButton,
   XpIcon,
   XpLink
 }
 const components = [
+  XpAvter,
   XpButton,
   XpIcon,
   XpLink

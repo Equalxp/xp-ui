@@ -21,9 +21,9 @@ const docMenus = {
   ],
   通用组件: [
     {
-      path: 'avater',
+      path: 'avatar',
       name: '头像',
-      component:() => import('../views/doc/avater/index.vue')
+      component:() => import('../views/doc/avatar/index.vue')
     },
     {
       path: "button",
