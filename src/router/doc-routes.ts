@@ -22,25 +22,34 @@ const docMenus = {
   通用组件: [
     {
       path: 'avatar',
-      name: '头像',
+      name: '头像 Avatar',
       component:() => import('../views/doc/avatar/index.vue')
     },
     {
       path: "button",
-      name:'按钮',
+      name:'按钮 Button',
       component: () => import("../views/doc/button/index.vue")
     },
     {
       path: 'icon',
-      name: '图标',
+      name: '图标 Icon',
       component:() => import('../views/doc/icon/index.vue')
     },
     {
       path: 'link',
-      name: '链接',
+      name: '链接 Link',
       component:() => import('../views/doc/link/index.vue')
     },
-
+    {
+      path: "tag",
+      name: "标签 Tag",
+      component: () => import('../views/doc/tag/index.vue')
+    },
+    {
+      path: 'ellipsis',
+      name: '文本省略 Ellipsis',
+      component: () => import('../views/doc/ellipsis/index.vue')
+    }
   ],
   数据录入组件: [],
   反馈组件: [],

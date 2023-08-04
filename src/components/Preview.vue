@@ -6,7 +6,6 @@
       {{ component!.__sourceCodeTitle }}
       <xp-button @click="hideCode" v-if="codeVisible">隐藏代码</xp-button>
       <xp-button @click="showCode" v-else>查看代码</xp-button>
-      <!-- <Button @click="showCode" v-else>查看代码</Button> -->
     </h2>
     <!-- 组件显示区域 -->
     <div class="preview-container-component">

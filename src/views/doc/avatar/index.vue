@@ -36,6 +36,7 @@ const propsDoc = [
     "default",
   ],
   ["shape", "设置头像的形状", "string", "circle / square", "circle"],
+  ["backgroundColor","头像框的背景颜色","string",'-','white'],
   ["src", "图片头像的资源地址", "string", "-", "-"],
   ["alt", "描述图像的替换文本", "string", "-", "-"],
 ]

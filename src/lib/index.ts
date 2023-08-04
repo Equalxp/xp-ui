@@ -5,18 +5,27 @@ import XpAvter from './avater/index.vue'
 import XpButton from './button/index.vue'
 import XpIcon from './icon/index.vue'
 import XpLink from './link/index.vue'
+import XpEllipsis from './ellipsis/index.vue'
+import XpTag from './tag/index.vue'
+
 // 支持组件的单一引入
 export {
   XpAvter,
   XpButton,
   XpIcon,
-  XpLink
+  XpLink,
+  XpEllipsis,
+  XpTag,
+
 }
 const components = [
   XpAvter,
   XpButton,
   XpIcon,
-  XpLink
+  XpLink,
+  XpEllipsis,
+  XpTag,
+  
 ]
 
 // 全局注册组件
