@@ -8,6 +8,7 @@ import XpLink from './link/index.vue'
 import XpEllipsis from './ellipsis/index.vue'
 import XpTag from './tag/index.vue'
 
+import XpInput from './input/index.vue'
 // 支持组件的单一引入
 export {
   XpAvter,
@@ -16,16 +17,20 @@ export {
   XpLink,
   XpEllipsis,
   XpTag,
+  XpInput,
 
 }
 const components = [
+  // 通用组件
   XpAvter,
   XpButton,
   XpIcon,
   XpLink,
   XpEllipsis,
   XpTag,
-  
+  // 数据录入组件
+  XpInput,
+
 ]
 
 // 全局注册组件

@@ -49,9 +49,18 @@ const docMenus = {
       path: 'ellipsis',
       name: '文本省略 Ellipsis',
       component: () => import('../views/doc/ellipsis/index.vue')
+    },
+    // {
+      
+    // }
+  ],
+  数据录入组件: [
+    {
+      path: 'input',
+      name: '输入框 Input',
+      component: () => import('../views/doc/input/index.vue')
     }
   ],
-  数据录入组件: [],
   反馈组件: [],
   导航组件: []
 }
