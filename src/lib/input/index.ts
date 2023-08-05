@@ -56,8 +56,8 @@ export const useInput = (props, emits) => {
   const readonly = computed(() => props.readonly);
 
   const type = computed(() => {
-    // show为true -> visible的值(text/pwd)
-    // visible为false -> show的值就为 password
+    // showPassword表示是这个框是否是password type
+    // visible代表密码显示与否
     return showPassword.value
       ? passwordVisible.value
         ? "text"
@@ -77,6 +77,7 @@ export const useInput = (props, emits) => {
     "xp-input-prefix": props.prefixIcon,
   }));
 
+  // 处理v-model的值
   const nativeInputValue = computed(() =>
     props.modelValue === null || props.modelValue === undefined
       ? ""

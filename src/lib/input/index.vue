@@ -27,7 +27,7 @@
           <component :is="prefixIcon" />
         </xp-icon>
       </span>
-      <!-- 图标显示在后面 -->
+      <!-- 图标显示在input框后面 -->
       <span class="xp-input-suffix-icon">
         <!-- icon -->
         <xp-icon
@@ -88,6 +88,7 @@ type TargetElement = HTMLInputElement | HTMLTextAreaElement;
 
 // 接收props的类型限定
 const props = defineProps(inputProps)
+// ()传入自定义事件名数组 接收传来的函数
 const emits = defineEmits(inputEmit)
 
 const { 
@@ -113,6 +114,8 @@ const handleChange = (e:event) => {
   if(value === nativeInputValue.value) {
     return
   }
+  // 触发函数 且传递值 
+  // v-model值+value值
   emits("update:modelValue", value);
   emits("input", value);
 }
@@ -268,7 +271,7 @@ $active-color: #18a058;
   .password-icon {
     display: none;
   }
-  // hover/focus都会显示 后缀的
+  // hover/focus在input框上 &->.xp-input
   &:hover .close-icon,
   &:focus .close-icon,
   &:hover .password-icon,
@@ -282,7 +285,7 @@ $active-color: #18a058;
 
     .xp-icon {
       color: #dcdfe6;
-
+      
       &:hover {
         color: #c0c4cc;
       }
