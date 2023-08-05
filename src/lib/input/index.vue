@@ -105,6 +105,7 @@ const {
   // 计算computed
 } = useInput(props,emits)
 
+// tag
 const input = ref<HTMLInputElement>();
 const textarea = ref<HTMLTextAreaElement>();
 const inputOrTextarea = computed(() => input.value || textarea.value);
@@ -167,6 +168,7 @@ const select = () => {
   });
 };
 
+// 向外暴露
 defineExpose({
   input,
   inputOrTextarea,

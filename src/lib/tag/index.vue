@@ -32,7 +32,7 @@ const props = defineProps({
     default: undefined,
   },
 })
-
+// 接收传递的函数
 const emits = defineEmits(['close'])
 const classes = computed(() => ({
   [`is-${props.type}`]: props.type,
@@ -50,6 +50,7 @@ const style = computed(() => {
     : "";
 });
 
+// 点击函数触发事件
 const handleClose = () => {
   emits("close");
 };
