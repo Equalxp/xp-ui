@@ -56,10 +56,15 @@ const docMenus = {
   ],
   数据录入组件: [
     {
+      path: 'checkbox',
+      name: '多选框 checkbox',
+      component: () => import('../views/doc/checkbox/index.vue')
+    },
+    {
       path: 'input',
       name: '输入框 Input',
       component: () => import('../views/doc/input/index.vue')
-    }
+    },
   ],
   反馈组件: [],
   导航组件: []
