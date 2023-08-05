@@ -15,6 +15,7 @@ const changeEvent = (value) => {
   emits("change", value);
 }
 
+// provide 注入 k-v 直系之间传递 只能在setup里面使用
 provide(
   "checkboxGroupKey",
   reactive({

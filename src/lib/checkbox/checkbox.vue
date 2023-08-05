@@ -4,7 +4,8 @@
     <span class="xp-checkbox-input" :class="classes">
       <!-- 选择上的图标icon  -->
       <xp-icon :color="iconColor" :size="iconSize">
-        <Check />
+        <Subtract12Filled v-if="indeterminate" />
+        <Check v-else />
       </xp-icon>
     </span>
     <!-- 选择文字 -->
@@ -17,6 +18,7 @@
 <script setup lang="ts">
 import { Check } from '@vicons/fa'
 import { checkboxProps, checkboxEmits, useCheckbox } from "./checkbox.ts";
+import { Subtract12Filled } from "@vicons/fluent";
 
 const props = defineProps(checkboxProps)
 const emits = defineEmits(checkboxEmits)
@@ -28,7 +30,8 @@ const {
   iconSize,
   disabled,
   iconColor,
-  isGroup
+  isGroup,
+  indeterminate,
 } = useCheckbox(props, emits);
 
 const handleChange = () => {
@@ -73,13 +76,43 @@ $small-height: 24px;
   height: $default-height;
 
   &.is-disabled {
-    cursor:not-allowed;
+    cursor: not-allowed;
   }
+
   &.xp-checkbox-large {
     height: $large-height;
   }
+
   &.xp-checkbox-small {
     height: $small-height;
+  }
+
+  &:not(.is-disabled):hover .xp-checkbox-input {
+    border: 1px solid #4b9e5f;
+  }
+  &:not(.is-disabled):focus .xp-checkbox-input {
+    box-shadow: 0 0 0 2px rgba(24, 160, 88, 0.3);
+    border: 1px solid #4b9e5f;
+  }
+
+  &.is-border {
+    border: 1px solid #c2c2c2;
+    border-radius: 4px;
+    padding: 0 8px;
+
+    &.is-checked:not(.is-disabled),
+    &.is-indeterminate:not(.is-disabled) {
+      color: $primary-color;
+      border: 1px solid #18a058;
+    }
+
+    &.xp-checkbox-large {
+      padding: 0 12px;
+    }
+
+    &.xp-checkbox-small {
+      padding: 0 8px;
+    }
   }
 
   > .xp-checkbox-input {
@@ -139,6 +172,5 @@ $small-height: 24px;
       color: #c2c2c2ff;
     }
   }
-
 }
 </style>

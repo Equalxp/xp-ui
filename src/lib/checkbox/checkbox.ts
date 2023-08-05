@@ -28,6 +28,7 @@ export const checkboxProps = {
     type: Boolean,
     default: false,
   },
+  // 边框
   border: {
     type: Boolean,
     default: false,
@@ -44,8 +45,9 @@ export const useCheckbox = (props, emits) => {
 
   const checkboxGroupProps = inject("checkboxGroupKey", undefined);
   const isGroup = computed(() => !!checkboxGroupProps);
-
+  // 单选框对应的值
   const label = computed(() => props.label)
+  // modelValue 是子组件使用v-model传来的值
   const modelValue = computed<String[] | Boolean>({
     get() {
       return isGroup.value ? checkboxGroupProps.modelValue : props.modelValue;
@@ -60,8 +62,10 @@ export const useCheckbox = (props, emits) => {
     },
   });
 
+  // 大小尺寸
   const size = computed(() => props.size)
 
+  // 前面icon的大小
   const iconSize = computed(()=>{
     if (props.iconSize) {
       return props.iconSize;
@@ -74,10 +78,12 @@ export const useCheckbox = (props, emits) => {
     }
   })
 
+  // 禁用框
   const disabled = computed(()=>{
     return props.disabled;
   })
 
+  // icon颜色
   const iconColor = computed(() => {
     if (disabled.value) {
       if (!isGroup.value) {
@@ -90,13 +96,16 @@ export const useCheckbox = (props, emits) => {
     }
   });
 
+  // 全选是否
   const indeterminate = computed(() => props.indeterminate);
+  // 边框
   const border = computed(() => props.border);
+  // 
   const classes = computed(() => ({
     "is-checked": isGroup.value
       ? modelValue.value.indexOf(label.value) > -1 && !indeterminate.value
       : modelValue.value && !indeterminate.value,
-    [`jw-checkbox-${size.value}`]: size.value,
+    [`xp-checkbox-${size.value}`]: size.value,
     "is-disabled": disabled.value,
     "is-indeterminate": indeterminate.value,
     "is-border": border.value,
@@ -110,6 +119,8 @@ export const useCheckbox = (props, emits) => {
     disabled,
     iconColor,
     isGroup,
+    indeterminate,
+    border,
   }
 }
 

@@ -1,3 +1,4 @@
+
 export const checkboxGroupProps = {
   // 子组件接收的props数据 进行数据的类型限定
   modelValue: {
