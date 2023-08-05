@@ -32,6 +32,21 @@ import TagPreview5 from "./TagPreview5.preview.vue";
 
 const propDoc = [
   ["closable", "是否可关闭", "boolean", "-", "false"],
+  [
+    "color",
+    "	标签颜色，设置该项后　type 无效",
+    "string",
+    "{ color?: string, borderColor?: string, textColor?: string }",
+    "undefined",
+  ],
+  ["size", "尺寸", "string", "	small/ medium / large", "false"],
+  [
+    "type",
+    "类型",
+    "string",
+    "default / primary / info / success / warning / error",
+    "default",
+  ],
 ]
 
 const slotDoc = [["default", "	标签内容", "-"]];
