@@ -1,7 +1,8 @@
 <template>
-  <label class="xp-checkbox" :class="classes" @click="handleChange">
+  <label class="xp-checkbox" :class="classes" @click="handleChange" tabindex='0'>
     <!-- 选择框 -->
     <span class="xp-checkbox-input" :class="classes">
+      <!-- 选择上的图标icon  -->
       <xp-icon :color="iconColor" :size="iconSize">
         <Check />
       </xp-icon>
@@ -26,11 +27,24 @@ const {
   classes,
   iconSize,
   disabled,
-  iconColor
+  iconColor,
+  isGroup
 } = useCheckbox(props, emits);
 
 const handleChange = () => {
-  modelValue.value = !modelValue.value
+  if(!disabled.value) {
+    if (isGroup.value) {
+      const index = modelValue.value.indexOf(label.value);
+      if (index > -1) {
+        modelValue.value.splice(index, 1);
+      } else {
+        modelValue.value.push(label.value);
+      }
+      modelValue.value = [...modelValue.value];
+    } else {
+      modelValue.value = !modelValue.value;
+    }
+  }
 }
 
 </script>

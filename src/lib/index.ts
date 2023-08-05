@@ -7,7 +7,8 @@ import XpIcon from './icon/index.vue'
 import XpLink from './link/index.vue'
 import XpEllipsis from './ellipsis/index.vue'
 import XpTag from './tag/index.vue'
-import XpCheckbox from './checkout/checkbox.vue'
+import XpCheckbox from './checkbox/checkbox.vue'
+import XpCheckboxGroup from "./checkbox/checkbox-group.vue";
 
 import XpInput from './input/index.vue'
 // 支持组件的单一引入
@@ -20,6 +21,8 @@ export {
   XpTag,
   XpInput,
   XpCheckbox,
+  XpCheckboxGroup,
+
 
 }
 const components = [
@@ -33,6 +36,8 @@ const components = [
   // 数据录入组件
   XpInput,
   XpCheckbox,
+  XpCheckboxGroup,
+
 
 ]
 
