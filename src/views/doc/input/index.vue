@@ -10,8 +10,10 @@
       <Preview :component="InputPreview5" />
       <Preview :component="InputPreview6" />
       <Preview :component="InputPreview7" />
-
       <Doc title="Input 属性" type="prop" :body="propDoc"></Doc>
+      <Doc title="Input 事件" type="event" :body="eventDoc" />
+      <Doc title="Input 方法" type="methods" :body="methodsDoc" />
+      
       <PrevAndNext
         :prev="{ path: '/doc/checkbox', name: '复选框 Checkbox' }"
         :next="{ path: '/doc/radio', name: '单选框 Radio' }"
@@ -40,8 +42,27 @@ const propDoc = [
     "text，textarea 和其他 原生 input 的 type 值",
     "text",
   ],
+  [" v-model", "绑定值", "string / number", "-", "-"],
+  ["placeholder", "输入框占位文本", "string", "-", "-"],
+  ["clearable", "是否可清空", "boolean", "-", "false"],
+  ["disabled", "	禁用", "boolean", "-", "false"],
+  ["prefix-icon", "输入框头部图标", "Component", "-", "-"],
+  ["suffix-icon", "输入框尾部图标", "Component", "-", "-"],
+  ["readonly", "原生属性，是否只读", "	boolean", "-", "false"],
 ]
 
+const eventDoc = [
+  ["input", "在 Input 值改变时触发", "(value: string / number)"],
+  ["clear", "在点击由 clearable 属性生成的清空按钮时触发", "-"],
+  ["blur", "在 Input 失去焦点时触发", "(event: Event)"],
+  ["focus", "在 Input 获得焦点时触发", "(event: Event)"],
+];
+
+const methodsDoc = [
+  ["input", "使 input 获取焦点", "-"],
+  ["blur", "使 input 失去焦点", "-"],
+  ["select", "选中 input 中的文字", "-"],
+];
 </script>
 
 <style lang="scss">

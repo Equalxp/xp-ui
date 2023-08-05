@@ -148,6 +148,7 @@ const blur = () => {
 };
 
 const handlePasswordVisible = () => {
+  // visible
   passwordVisible.value = !passwordVisible.value;
 };
 
@@ -182,7 +183,10 @@ export default {
 
 <style lang="scss">
 $active-color: #18a058;
+// $active-color: #060607
+
 .xp-input {
+  // input框外的div盒子
   width: 100%;
   cursor: pointer;
   position: relative;
@@ -195,6 +199,7 @@ $active-color: #18a058;
     padding-right: 30px;
   }
 
+  // input框的样式
   &-inner {
     position: relative;
     cursor: pointer;
@@ -288,9 +293,9 @@ $active-color: #18a058;
   }
 }
 
-.jw-textarea {
+.xp-textarea {
   width: 100%;
-  .jw-textarea-inner {
+  .xp-textarea-inner {
     display: block;
     resize: vertical;
     padding: 5px 15px;

@@ -18,6 +18,6 @@
 import { ref } from "vue";
 import { Search28Filled } from "@vicons/fluent";
 
-const value = ref("hello");
-const value1 = ref("hello");
+const value = ref("hello world");
+const value1 = ref("hello world");
 </script>
