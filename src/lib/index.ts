@@ -10,8 +10,14 @@ import XpTag from './tag/index.vue'
 import XpCheckbox from './checkbox/checkbox.vue'
 import XpCheckboxGroup from "./checkbox/checkbox-group.vue";
 import XpSwitch from './switch/index.vue'
-
 import XpInput from './input/index.vue'
+import XpTab from './tab/index.vue'
+import XpTabs from './tabs/index.vue'
+import XpRadio from './radio/radio.vue'
+import XpRadioGroup from './radio/radio-group.vue'
+
+
+
 // 支持组件的单一引入
 export {
   XpAvter,
@@ -24,6 +30,11 @@ export {
   XpCheckbox,
   XpCheckboxGroup,
   XpSwitch,
+  XpTab,
+  XpTabs,
+  XpRadio,
+  XpRadioGroup,
+
 
 
 }
@@ -40,6 +51,10 @@ const components = [
   XpCheckbox,
   XpCheckboxGroup,
   XpSwitch,
+  XpTab,
+  XpTabs,
+  XpRadio,
+  XpRadioGroup,
   
 
 ]

@@ -70,10 +70,23 @@ const docMenus = {
       name: '开关 Switch',
       component: () => import('../views/doc/switch/index.vue')
     },
+    {
+      path: 'radio',
+      name: '单选框 Radio',
+      component: () => import('../views/doc/radio/index.vue')
+    },
+    
     
   ],
   反馈组件: [],
-  导航组件: []
+  导航组件: [
+    { 
+      path: "tabs",
+      component: () => import('../views/doc/tabs/index.vue'),
+      name: "标签页 Tabs" 
+    },
+
+  ]
 }
 
 let docRoutes:any = [];
