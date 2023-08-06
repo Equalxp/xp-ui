@@ -4,6 +4,8 @@
     <p>在一组备选项中进行单选</p>
     <div class="preview-wrapper">
       <Preview :component="RaidoPreview1" />
+      <Preview :component="RaidoPreview2" />
+      <Preview :component="RaidoPreview3" />
     </div>
   </div>
 </template>
@@ -13,6 +15,8 @@ import Preview from '../../../components/Preview.vue';
 import PrevAndNext from '../../../components/PrevAndNext.vue'
 import Doc from '../../../components/Doc.vue'
 import RaidoPreview1 from "./RaidoPreview1.preview.vue";
+import RaidoPreview2 from "./RaidoPreview2.preview.vue";
+import RaidoPreview3 from "./RaidoPreview3.preview.vue";
 
 
 </script>
