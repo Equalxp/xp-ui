@@ -65,6 +65,12 @@ const docMenus = {
       name: '输入框 Input',
       component: () => import('../views/doc/input/index.vue')
     },
+    {
+      path: 'switch',
+      name: '开关 Switch',
+      component: () => import('../views/doc/switch/index.vue')
+    },
+    
   ],
   反馈组件: [],
   导航组件: []

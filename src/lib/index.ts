@@ -9,6 +9,7 @@ import XpEllipsis from './ellipsis/index.vue'
 import XpTag from './tag/index.vue'
 import XpCheckbox from './checkbox/checkbox.vue'
 import XpCheckboxGroup from "./checkbox/checkbox-group.vue";
+import XpSwitch from './switch/index.vue'
 
 import XpInput from './input/index.vue'
 // 支持组件的单一引入
@@ -22,6 +23,7 @@ export {
   XpInput,
   XpCheckbox,
   XpCheckboxGroup,
+  XpSwitch,
 
 
 }
@@ -37,7 +39,8 @@ const components = [
   XpInput,
   XpCheckbox,
   XpCheckboxGroup,
-
+  XpSwitch,
+  
 
 ]
 
