@@ -1,10 +1,10 @@
 <preview>单选框组</preview>
 <template>
-  <jw-radio-group v-model="radio" size="large">
-    <jw-radio label="1">选项 A</jw-radio>
-    <jw-radio label="2">选项 B</jw-radio>
-    <jw-radio label="3" disabled>选项 C</jw-radio>
-  </jw-radio-group>
+  <xp-radio-group v-model="radio" size="large">
+    <xp-radio label="1">选项 A</xp-radio>
+    <xp-radio label="2">选项 B</xp-radio>
+    <xp-radio label="3" disabled>选项 C</xp-radio>
+  </xp-radio-group>
 </template>
 
 <script setup lang="ts">

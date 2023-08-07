@@ -12,7 +12,8 @@
       size="large"
       :disabled="disabled"
     />
-    <!-- <xp-switch v-model="disabled" /> -->
+    <!-- 绑定switch框 disabled状态的取消 -->
+    <xp-switch v-model="disabled" />
   </div>
 </template>
 

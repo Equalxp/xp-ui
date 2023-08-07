@@ -48,9 +48,10 @@ export const useRadio = (props,emits) => {
   );
 
   const classes = computed(() => ({
+    // 选中的状态就是让v-model的值和标签的label值相同
     "is-checked": modelValue.value === label.value,
     "is-disabled": disabled.value,
-    [`jw-radio-${size.value}`]: size.value,
+    [`xp-radio-${size.value}`]: size.value,
     "is-bordered": border.value,
   }));
 

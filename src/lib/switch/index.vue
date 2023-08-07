@@ -4,8 +4,9 @@
     class="xp-switch"
     :class="classes"
     @click="toggle"
+    :style="{ background: modelValue ? activeColor : inactiveColor }"
     >
-    <!-- :style="{ background: modelValue ? activeColor : inactiveColor }" -->
+    <!-- span就是那小圆圈 -->
     <span></span>
   </button>
 </template>

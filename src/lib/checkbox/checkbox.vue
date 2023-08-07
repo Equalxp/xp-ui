@@ -1,6 +1,6 @@
 <template>
   <label class="xp-checkbox" :class="classes" @click="handleChange" tabindex='0'>
-    <!-- 选择框 -->
+    <!-- 选择图标 -->
     <span class="xp-checkbox-input" :class="classes">
       <!-- 选择上的图标icon  -->
       <xp-icon :color="iconColor" :size="iconSize">
@@ -8,7 +8,7 @@
         <Check v-else />
       </xp-icon>
     </span>
-    <!-- 选择文字 -->
+    <!-- 选择图标后的文字 -->
     <span class="xp-checkbox-label" :class="classes">
       <slot>{{ label }}</slot>
     </span>
@@ -75,6 +75,7 @@ $small-height: 24px;
   cursor: pointer;
   height: $default-height;
 
+  // 
   &.is-disabled {
     cursor: not-allowed;
   }
@@ -87,6 +88,7 @@ $small-height: 24px;
     height: $small-height;
   }
 
+  // 不是.is-disabled属性的 hover时 / active时
   &:not(.is-disabled):hover .xp-checkbox-input {
     border: 1px solid #4b9e5f;
   }
@@ -99,7 +101,7 @@ $small-height: 24px;
     border: 1px solid #c2c2c2;
     border-radius: 4px;
     padding: 0 8px;
-
+    // 选中之后 border的颜色
     &.is-checked:not(.is-disabled),
     &.is-indeterminate:not(.is-disabled) {
       color: $primary-color;
