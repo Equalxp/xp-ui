@@ -15,7 +15,7 @@ import XpTab from './tab/index.vue'
 import XpTabs from './tabs/index.vue'
 import XpRadio from './radio/radio.vue'
 import XpRadioGroup from './radio/radio-group.vue'
-
+import XpMessage from './message/index.ts'
 
 
 // 支持组件的单一引入
@@ -34,7 +34,7 @@ export {
   XpTabs,
   XpRadio,
   XpRadioGroup,
-
+  XpMessage,
 
 
 }
@@ -55,7 +55,7 @@ const components = [
   XpTabs,
   XpRadio,
   XpRadioGroup,
-  
+  XpMessage,
 
 ]
 

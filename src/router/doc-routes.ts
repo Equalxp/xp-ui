@@ -78,7 +78,13 @@ const docMenus = {
     
     
   ],
-  反馈组件: [],
+  反馈组件: [
+    {
+      path: 'message',
+      name: '消息框 Message',
+      component: () => import('../views/doc/message/index.vue')
+    },
+  ],
   导航组件: [
     { 
       path: "tabs",
