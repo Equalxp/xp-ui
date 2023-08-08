@@ -5,21 +5,21 @@
 </template>
 
 <script setup lang="ts">
-import { h } from 'vue'
-import XpMessage from '@/lib/message/index.ts';
+import { h } from "vue";
+import XpMessage from "@/lib/message/index.ts";
 
 const open = () => {
-  XpMessage()
-  // XpMessage('This is a Message')
-}
+  // XpMessage("This is a Message");
+  XpMessage();
+};
 
 const openVn = () => {
   XpMessage({
+    // h返回值会被作为组件的DOM结构 VNode
     message: h("p", null, [
       h("span", null, "Message can be "),
       h("i", { style: "color: teal" }, "VNode"),
     ]),
   });
-}
-
+};
 </script>

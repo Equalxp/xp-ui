@@ -1,47 +1,96 @@
-import { createVNode, render, ref } from "vue"
-import type { MessageQueue } from "./message"
-import MessageConstructor from "./message.vue"
+import { createVNode, render, ref, VNode, isVNode } from 'vue'
+import type { MessageQueue } from './message'
+import MessageConstructor from './message.vue'
 
 let seed = 1
 const zIndex = ref(2000)
-// VNode组成的数组
+// vm实例数组
 const instances: MessageQueue = []
 
-// 调用这个函数 就创建message组件并可接收参数
 const message = function (options = {}) {
+  if(typeof options === 'string' || isVNode(options)) {
+    options = { message: options }
+  }
+  console.log('options',options);
+  // 距离上边框的距离
   let verticalOffset = 20
-  // 多一个message 垂直偏移量加+16
+  // 多个message框的offset计算
   instances.forEach(({ vm }) => {
     verticalOffset += (vm.el?.offsetHeight || 0) + 16
   })
 
   const id = `message_${seed++}`
+  const userOnClose = (options as any).onClose
   const props = {
     id,
     offset: verticalOffset,
     zIndex: zIndex.value++,
-    ...options
+    ...options,
+    onClose: () => {
+      close(id, userOnClose)
+    }
+  } as any
+
+  // 追加的"根组件"
+  let appendTo: HTMLElement | null = document.body
+  if(options.appendTo instanceof HTMLElement) {
+    appendTo = options.appendTo
+  } else if (typeof options.appendTo === 'string') {
+    appendTo = document.querySelector(options.appendTo)
   }
 
-  // 追加的根元素
-  let appendTo: HTMLElement | null = document.body
+  // 是否退回默认值
+  if (!(appendTo instanceof HTMLElement)) {
+    throw new Error(
+      "JwMessage the appendTo option is not an HTMLElement. Falling back to document.body."
+    );
+    appendTo = document.body;
+  }
 
-  // 创建div和添加类名
   const container = document.createElement("div")
   container.className = `container_${id}`
+  // props传递给了MessageConstructor组件
+  // const vm = createVNode(MessageConstructor, props, null)
 
-  // 元素类型 元素属性 元素内容 创建了虚拟dom
-  const vm = createVNode(MessageConstructor, props, null)
+  const message = props.message
+  const vm = createVNode(
+    MessageConstructor,
+    props,
+    isVNode(props.message) ? { default: () => message } : null
+  );
 
-  // 元素是destroy VNode会被GC收集
   vm.props!.onDestroy = () => {
-    render(null, container)
-  }
+    render(null, container);
+  };
 
-  // 渲染虚拟dom,渲染的位置
-  render(vm, container)
-  instances.push({ vm })
-  appendTo.appendChild(container.firstElementChild!)
+  render(vm, container);
+  instances.push({ vm });
+  appendTo.appendChild(container.firstElementChild!);
+
+  return {
+    // 不是直接调用 onClose 函数，而是设置这个值，这样我们就可以拥有完整的生命周期
+    close: () => ((vm.component!.proxy as any).visible = false),
+  }
 }
 
-export default message
+export function close(id: string, userOnClose?: (vm: VNode) => void): void {
+  const index = instances.findIndex(({ vm }) => id === vm.component!.props.id)
+  if(index === -1) return
+
+  const { vm } = instances[index]
+  if(!vm) return
+  userOnClose?.(vm)
+
+  const removedHeight = vm.el!.offsetHeight;
+  instances.splice(index, 1);
+
+  const len = instances.length;
+  if (len < 1) return;
+
+  for (let i = index; i < len; i++) {
+    const pos = parseInt(instances[i].vm.el!.style["top"], 10) - removedHeight - 16;
+    instances[i].vm.component!.props.offset = pos;
+  }
+}
+
+export default message;

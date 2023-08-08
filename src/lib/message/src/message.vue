@@ -1,96 +1,108 @@
 <template>
-  <!-- message组件 -->
   <transition
     :duration="300"
-    leave-active-class="animate_zoomOut"
-    enter-active-class="animate_zoomIn"
+    leave-active-class="animate__zoomOut"
+    enter-active-class="animate__zoomIn"
+    @before-leave="onClose"
+    @after-leave="$emit('destory')"
   >
-  <!-- 浏览器上方出现的message框 -->
+  <!-- 动画库 animate.css -->
     <div
-      class="xp-message animate_animated"
+      class="xp-message animate__animated"
       v-show="visible"
       :style="customStyle"
       :id="id"
     >
-    1 + 1 = ?
+      罗潇鹏是傻逼
+      <!-- 反！ -->
+      <xp-icon
+        class="xp-message-icon"
+        :size="22"
+        v-if="type === 'info'"
+        color="#3f7ee8"
+      >
+        <Info24Filled />
+      </xp-icon>
+      <!-- 勾 -->
+      <xp-icon
+        class="xp-message-icon"
+        :size="22"
+        v-if="type === 'success'"
+        color="#4b9e5f"
+      >
+        <IosCheckmarkCircle />
+      </xp-icon>
+      <!-- 警告！ -->
+      <xp-icon
+        class="xp-message-icon"
+        :size="22"
+        v-if="type === 'warning'"
+        color="#e4a341"
+      >
+        <WarningFilled />
+      </xp-icon>
+      <!-- 叉 -->
+      <xp-icon
+        class="xp-message-icon"
+        :size="22"
+        v-if="type === 'error'"
+        color="#bf3f53"
+      >
+        <CloseCircle />
+      </xp-icon>
+      <slot>
+        {{ message }}
+      </slot>
     </div>
   </transition>
 </template>
 
 <script setup lang="ts">
-import {
-  ref,
-  onMounted,
-  computed,
-  watch,
-  getCurrentInstance,
-  nextTick,
-} from 'vue'
-
-const props = defineProps({
-  duration: {
-    type: Number,
-    default: 3000,
-  },
-  id: {
-    type: String,
-    default: "",
-  },
-  offset: {
-    type: Number,
-    default: 100,
-  },
-  zIndex: {
-    type: Number,
-    default: 0,
-  },
-})
+import { ref, onMounted, computed } from "vue";
+import { messageProps, messageEmits } from "./message";
+import XpIcon from "@/lib/icon/index.vue";
+import { Info24Filled } from "@vicons/fluent";
+import { IosCheckmarkCircle } from "@vicons/ionicons4";
+import { WarningFilled } from "@vicons/carbon";
+import { CloseCircle } from "@vicons/ionicons5";
+const props = defineProps(messageProps);
+const emits = defineEmits(messageEmits);
 
 const visible = ref(false)
-
-// 获取当前组件实例的上下文
-const internalInstance = getCurrentInstance()
-// const el = internalInstance?.vnode.el
-// console.log('el->',el);
-
-// 样式的计算
-const customStyle = computed(()=>({
+// 操作后的style类
+const customStyle = computed(() => ({
   top: `${props.offset}px`,
   zIndex: props.zIndex,
-}))
+}));
 
-// 自动消散
+// message框出现后的消散
 function startTimer() {
   if(props.duration > 0) {
-    setTimeout(()=>{
+    setTimeout(() => {
       if(visible.value) close()
-    },props.duration)
-  }  
-}
-
-// 关闭
-function close() {
-  visible.value = false;
-}
-
-onMounted(()=>{
-  startTimer();
-  visible.value = true
-})
-
-watch(visible,() => {
-  if(!visible.value) {
-    setTimeout(()=>{
-      // el用于直接操作dom对象
-      const el = internalInstance?.vnode.el
-      el.parentNode.removeChild(el)
-    },300)
+    }, props.duration)
   }
-})
+}
+
+function close() {
+  visible.value = false
+}
+
+onMounted(() => {
+  startTimer();
+  visible.value = true;
+});
+
 
 </script>
 
-<style lang="scss">
+<script lang="ts">
+export default {
+  name: "XpMessage",
+};
+</script>
+
+<style scoped>
 .xp-message {
   --xp-bezier: cubic-bezier(0.4, 0, 0.2, 1);
   position: fixed;
@@ -105,10 +117,15 @@ watch(visible,() => {
   overflow: hidden;
   width: 380px;
   color: rgb(51, 54, 57);
-  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
-    0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 
+    0 6px 16px 0 rgba(0, 0, 0, 0.08), 
+    0 9px 28px 8px rgba(0, 0, 0, 0.05);
   transition: color 0.3s var(--xp-bezier), box-shadow 0.3s var(--xp-bezier),
     background-color 0.3s var(--xp-bezier), opacity 0.3s var(--xp-bezier),
-    transform 0.3s var(--xp-bezier), margin-bottom 0.3s var(--xp-bezier);
+    transform 0.3s var(--xp-bezier), margin-bottom 0.3s var(--xp-bezier),
+    top 0.3s var(--xp-bezier);
+  & .xp-message-icon {
+    margin-right: 10px;
+  }
 }
 </style>
