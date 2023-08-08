@@ -33,6 +33,14 @@ export const messageProps = {
     type: [String, Object],
     default: "",
   },
+  showClose: {
+    type: Boolean,
+    default: false,
+  },
+  center: {
+    type: Boolean,
+    default: false
+  }
 };
 
 export const messageEmits = ["destory"];

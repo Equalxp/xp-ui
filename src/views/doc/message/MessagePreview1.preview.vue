@@ -9,8 +9,8 @@ import { h } from "vue";
 import XpMessage from "@/lib/message/index.ts";
 
 const open = () => {
-  // XpMessage("This is a Message");
-  XpMessage();
+  XpMessage("This is a Message");
+  // XpMessage();
 };
 
 const openVn = () => {

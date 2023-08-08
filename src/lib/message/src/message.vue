@@ -12,6 +12,10 @@
       v-show="visible"
       :style="customStyle"
       :id="id"
+      :class="{
+        'is-close': close,
+        'is-center': center
+      }"
     >
       罗潇鹏是傻逼
       <!-- 反！ -->
@@ -53,6 +57,10 @@
       <slot>
         {{ message }}
       </slot>
+      <!-- 末尾的叉 -->
+      <xp-icon v-if="showClose" :size="18" class="xp-close-icon" @click.stop="close">
+        <Close />
+      </xp-icon>
     </div>
   </transition>
 </template>
@@ -64,7 +72,7 @@ import XpIcon from "@/lib/icon/index.vue";
 import { Info24Filled } from "@vicons/fluent";
 import { IosCheckmarkCircle } from "@vicons/ionicons4";
 import { WarningFilled } from "@vicons/carbon";
-import { CloseCircle } from "@vicons/ionicons5";
+import { CloseCircle,Close } from "@vicons/ionicons5";
 const props = defineProps(messageProps);
 const emits = defineEmits(messageEmits);
 
@@ -124,8 +132,21 @@ export default {
     background-color 0.3s var(--xp-bezier), opacity 0.3s var(--xp-bezier),
     transform 0.3s var(--xp-bezier), margin-bottom 0.3s var(--xp-bezier),
     top 0.3s var(--xp-bezier);
-  & .xp-message-icon {
+
+  &.is-close {
+    padding-right: 38px;
+  }
+  &.is-center {
+    justify-content: center;
+  }
+  .xp-message-icon {
     margin-right: 10px;
+  }
+  .xp-close-icon {
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 10px);
+    cursor: pointer;
   }
 }
 </style>

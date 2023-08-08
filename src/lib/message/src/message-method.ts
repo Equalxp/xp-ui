@@ -1,6 +1,7 @@
 import { createVNode, render, ref, VNode, isVNode } from 'vue'
 import type { MessageQueue } from './message'
 import MessageConstructor from './message.vue'
+import { messageTypes } from './message'
 
 let seed = 1
 const zIndex = ref(2000)
@@ -8,10 +9,12 @@ const zIndex = ref(2000)
 const instances: MessageQueue = []
 
 const message = function (options = {}) {
+  // options是一个VNode
+  console.log('options',options);
   if(typeof options === 'string' || isVNode(options)) {
     options = { message: options }
   }
-  console.log('options',options);
+  // console.log('options',options);
   // 距离上边框的距离
   let verticalOffset = 20
   // 多个message框的offset计算
@@ -33,6 +36,8 @@ const message = function (options = {}) {
 
   // 追加的"根组件"
   let appendTo: HTMLElement | null = document.body
+  // 
+  console.log('typeof options.appendTo',typeof options.appendTo);
   if(options.appendTo instanceof HTMLElement) {
     appendTo = options.appendTo
   } else if (typeof options.appendTo === 'string') {
@@ -41,10 +46,10 @@ const message = function (options = {}) {
 
   // 是否退回默认值
   if (!(appendTo instanceof HTMLElement)) {
+    appendTo = document.body;
     throw new Error(
       "JwMessage the appendTo option is not an HTMLElement. Falling back to document.body."
     );
-    appendTo = document.body;
   }
 
   const container = document.createElement("div")
@@ -52,7 +57,10 @@ const message = function (options = {}) {
   // props传递给了MessageConstructor组件
   // const vm = createVNode(MessageConstructor, props, null)
 
+  // VNode ...options传来的值
   const message = props.message
+  
+  // 创造vm
   const vm = createVNode(
     MessageConstructor,
     props,
@@ -72,6 +80,21 @@ const message = function (options = {}) {
     close: () => ((vm.component!.proxy as any).visible = false),
   }
 }
+
+// 不同状态
+messageTypes.forEach((type) => {
+  message[type] = (options = {}) => {
+    if (typeof options === "string" || isVNode(options)) {
+      options = {
+        message: options,
+      };
+    }
+    return message({
+      ...options,
+      type,
+    });
+  };
+});
 
 export function close(id: string, userOnClose?: (vm: VNode) => void): void {
   const index = instances.findIndex(({ vm }) => id === vm.component!.props.id)

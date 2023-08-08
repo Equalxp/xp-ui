@@ -4,9 +4,9 @@
     <p>浏览器顶部降下来的旨意</p>
     <div class="preview-wrapper">
       <Preview :component="MessagePreview1"></Preview>
-      <!-- <Preview :component="MessagePreview2"></Preview> -->
-      <!-- <Preview :component="MessagePreview3"></Preview> -->
-      <!-- <Preview :component="MessagePreview4"></Preview> -->
+      <Preview :component="MessagePreview2"></Preview>
+      <Preview :component="MessagePreview3"></Preview>
+      <Preview :component="MessagePreview4"></Preview>
       <Doc title="配置项" type="prop" :body="propDoc" />
       <Doc title="方法" type="methods" :body="methodsDoc" />
       <PrevAndNext
