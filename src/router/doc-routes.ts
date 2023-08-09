@@ -80,6 +80,11 @@ const docMenus = {
   ],
   反馈组件: [
     {
+      path: 'alert',
+      name: '提示 Alert',
+      component: () => import('../views/doc/alert/index.vue')
+    },
+    {
       path: 'message',
       name: '消息框 Message',
       component: () => import('../views/doc/message/index.vue')
