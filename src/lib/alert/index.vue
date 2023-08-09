@@ -10,6 +10,7 @@
       >
         <Close />
       </xp-icon>
+      <!-- 具名插槽 -->
       <slot name="icon">
         <template v-if="showIcon">
           <xp-icon
@@ -91,6 +92,8 @@ const props = defineProps({
   showIcon: Boolean,
   center: Boolean,
 })
+const emits = defineEmits(['close'])
+// 类型 居中 关闭按钮
 const classes = computed(() => ({
   [`xp-alert-${props.type}`]: props.type,
   "is-center": props.center,
@@ -101,6 +104,7 @@ const visible = ref(true)
 
 const close = () => {
   visible.value = false;
+  emits('close')
 };
 
 </script>
