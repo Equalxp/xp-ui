@@ -92,6 +92,16 @@ const docMenus = {
   ],
   导航组件: [
     { 
+      path: "affix",
+      component: () => import('../views/doc/affix/index.vue'),
+      name: "固钉 Affix" 
+    },
+    { 
+      path: "backtop",
+      component: () => import('../views/doc/backtop/index.vue'),
+      name: "回到顶部 Backtop" 
+    },
+    { 
       path: "tabs",
       component: () => import('../views/doc/tabs/index.vue'),
       name: "标签页 Tabs" 

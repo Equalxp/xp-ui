@@ -17,6 +17,10 @@ import XpRadio from './radio/radio.vue'
 import XpRadioGroup from './radio/radio-group.vue'
 import XpMessage from './message/index.ts'
 import XpAlert from './alert/index.vue'
+import XpAffix from './affix/index.vue'
+import XpBacktop from './backtop/index.vue'
+
+
 
 // 支持组件的单一引入
 export {
@@ -36,7 +40,10 @@ export {
   XpRadioGroup,
   XpMessage,
   XpAlert,
-  
+  XpAffix,
+  XpBacktop,
+
+
 
 }
 const components = [
@@ -58,6 +65,10 @@ const components = [
   XpRadioGroup,
   XpMessage,
   XpAlert,
+  XpAffix,
+  XpBacktop,
+
+
   
 
 ]
