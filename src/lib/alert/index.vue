@@ -1,5 +1,41 @@
 <template>
   <div class="xp-alert" :class="classes">
+    <slot name="icon">
+      <template v-if="showIcon">
+        <xp-icon
+          class="xp-alert-icon"
+          :size="22"
+          v-if="type === 'info'"
+          color="#3f7ee8"
+        >
+          <Info24Filled />
+        </xp-icon>
+        <xp-icon
+          class="xp-alter-icon"
+          :size="22"
+          v-if="type === 'warning'"
+          color='#e4a341'
+        >
+          <WarningFilled />
+        </xp-icon>
+        <xp-icon
+          class="xp-alert-icon"
+          :size="22"
+          v-if="type === 'success'"
+          color="#4b9e5f"
+        >
+          <IosCheckmarkCircle />
+        </xp-icon>
+        <xp-icon
+          class="xp-alert-icon"
+          :size="22"
+          v-if="type === 'error'"
+          color="#bf3f53"
+        >
+          <CloseCircle />
+        </xp-icon>
+      </template>
+    </slot>
     <div class="xp-alert-body">
       <div class="xp-alert-body-title">{{ title }}</div>
       <div class="xp-alert-body-content"></div>
@@ -9,6 +45,11 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import { Info24Filled } from "@vicons/fluent";
+import { IosCheckmarkCircle } from "@vicons/ionicons4";
+import { WarningFilled } from "@vicons/carbon";
+import { CloseCircle } from "@vicons/ionicons5";
+
 // props接收的参数
 const props = defineProps({
   title: {
@@ -35,7 +76,6 @@ const classes = computed(() => ({
 }))
 
 
-
 </script>
 
 <script lang="ts">
@@ -56,6 +96,9 @@ export default {
   display: flex;
   align-items: center;
   transition: opacity 0.2s;;
+  .xp-alert-icon {
+    margin-right: 10px;
+  }
   .xp-alert-body {
     .xp-alert-body-title {
       // 过渡效果的属性 时间 过渡函数速度效果曲线 开始延迟时间

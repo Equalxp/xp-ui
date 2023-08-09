@@ -4,8 +4,9 @@
     <p>用于页面中展示重要的提示信息。</p>
     <div class="preview-wrapper">
       <Preview :component="AlertPreview1"/>
-
-
+      <Preview :component="AlertPreview2"/>
+      <Preview :component="AlertPreview3"/>
+      
     </div>
    </div>
 </template>
@@ -15,6 +16,9 @@ import Preview from '../../../components/Preview.vue';
 import PrevAndNext from '../../../components/PrevAndNext.vue'
 import Doc from '../../../components/Doc.vue'
 import AlertPreview1 from './AlertPreview1.preview.vue'
+import AlertPreview2 from './AlertPreview2.preview.vue'
+import AlertPreview3 from './AlertPreview3.preview.vue'
+  
 
 </script>
 
