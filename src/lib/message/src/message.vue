@@ -16,8 +16,10 @@
         'is-close': close,
         'is-center': center
       }"
+      @mouseenter="clearTimer"
+      @mouseleave="startTimer"
     >
-      罗潇鹏是傻逼
+    我是傻逼
       <!-- 反！ -->
       <xp-icon
         class="xp-message-icon"
@@ -66,7 +68,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, onUnmounted } from "vue";
 import { messageProps, messageEmits } from "./message";
 import XpIcon from "@/lib/icon/index.vue";
 import { Info24Filled } from "@vicons/fluent";
@@ -77,30 +79,52 @@ const props = defineProps(messageProps);
 const emits = defineEmits(messageEmits);
 
 const visible = ref(false)
+let stopTimer = undefined
 // 操作后的style类
 const customStyle = computed(() => ({
   top: `${props.offset}px`,
   zIndex: props.zIndex,
 }));
 
-// message框出现后的消散
+// 鼠标移入清除定时器 message框出现后的消散 
 function startTimer() {
   if(props.duration > 0) {
-    setTimeout(() => {
+    stopTimer = setTimeout(() => {
       if(visible.value) close()
     }, props.duration)
   }
+}
+// 移出重置定时器
+function clearTimer() {
+  clearTimeout(stopTimer)
+  stopTimer = undefined
 }
 
 function close() {
   visible.value = false
 }
 
+// esc清除message
+function keydown({ code }:KeyboardEvent) {
+  if(code === 'Escape') {
+    if(visible.value) {
+      close()
+    }
+  } else {
+    startTimer()
+  }
+}
+
 onMounted(() => {
   startTimer();
   visible.value = true;
+
+  document.addEventListener('keydown', keydown)
 });
 
+onUnmounted(() => {
+  document.removeEventListener("keydown", keydown);
+});
 
 </script>
 
