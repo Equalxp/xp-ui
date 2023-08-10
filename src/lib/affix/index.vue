@@ -11,8 +11,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, shallowRef, computed, reactive } from 'vue'
-
+import {
+  ref,
+  onMounted,
+  onBeforeUnmount,
+  shallowRef,
+  computed,
+  reactive,
+  watch,
+  defineExpose,
+} from "vue";
 const props = defineProps({
   // 偏移量
   offset: {
@@ -34,6 +42,7 @@ const props = defineProps({
   },
 })
 
+const emits = defineEmits(["change", "scroll"]);
 // 滚动容器
 const target = shallowRef<HTMLElement>();
 // 固钉ref 目标元素(button)
@@ -78,7 +87,12 @@ const affixStyle = computed(() => {
 })
 
 // 滚动容器target的scroll事件的响应函数 
-const onScroll = function(e) {
+const onScroll = function() {
+  update()
+  emits("scroll", state.fixed);
+}
+
+const update = () => {
   if(!root.value || !target.value) return
 
   // 更新固钉状态 距离上和左边框的距离(可视范围的距离)
@@ -117,11 +131,15 @@ const onScroll = function(e) {
     }
   }
   console.log(props.offset, rootRect.top);
+
 }
 
-// const update = () => {
-
-// }
+watch(
+  () => state.fixed,
+  () => {
+    emits("change", state.fixed);
+  }
+);
 
 onMounted(()=>{
   // 根据传入的target确定 target容器
@@ -140,9 +158,16 @@ onMounted(()=>{
   
   // 监听滚动容器的scroll事件
   window.addEventListener("scroll", onScroll, true);
+  window.addEventListener("resize", onScroll);
 })
 
-
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", onScroll);
+  window.removeEventListener("resize", onScroll);
+});
+defineExpose({
+  update,
+});
 
 </script>
 

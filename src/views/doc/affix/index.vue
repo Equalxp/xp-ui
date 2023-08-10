@@ -5,6 +5,7 @@
     <div class="preview-wrapper" style="height: 3000px; padding: 1000px 0">
       <Preview :component="AffixPreview1" />
       <Preview :component="AffixPreview2" />
+      <Preview :component="AffixPreview3" />
 
     </div>
   </div>
@@ -16,6 +17,7 @@ import PrevAndNext from '../../../components/PrevAndNext.vue'
 import Doc from '../../../components/Doc.vue'
 import AffixPreview1 from "./AffixPreview1.preview.vue";
 import AffixPreview2 from "./AffixPreview2.preview.vue";
+import AffixPreview3 from "./AffixPreview3.preview.vue";
 
 
 </script>
