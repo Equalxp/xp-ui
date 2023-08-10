@@ -9,6 +9,7 @@
     >
       <slot></slot>
     </span>
+    <!-- 有separatorIcon就用icon 没有就用/ -->
     <xp-icon
       v-if="parent?.separatorIcon"
       class="xp-breadcrumb-separator"

@@ -3,6 +3,7 @@
     <h1>面包屑 Breadcrumb</h1>
     <div class="preview-wrapper">
       <Preview :component="BreadcrumbPreview1" />
+      <Preview :component="BreadcrumbPreview2" />
     </div>
   </div>
 </template>
@@ -12,6 +13,7 @@ import Preview from '../../../components/Preview.vue';
 import PrevAndNext from '../../../components/PrevAndNext.vue'
 import Doc from '../../../components/Doc.vue'
 import BreadcrumbPreview1 from "./BreadcrumbPreview1.preview.vue";
+import BreadcrumbPreview2 from "./BreadcrumbPreview2.preview.vue";
 
 
 
