@@ -87,9 +87,9 @@ const affixStyle = computed(() => {
 })
 
 // 滚动容器target的scroll事件的响应函数 
-const onScroll = function() {
+const onScroll = function(e) {
   update()
-  emits("scroll", state.fixed);
+  emits("scroll", e);
 }
 
 const update = () => {
