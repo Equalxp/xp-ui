@@ -1,7 +1,15 @@
 <template>
   <div class="xp-select">
     <!-- modelLable会显示出对应的label -->
-    <xp-input readonly v-model="modelLable" :suffix-icon="IosArrowDown" />
+    <xp-input 
+      readonly 
+      v-model="modelLable" 
+      :suffix-icon="IosArrowDown" 
+      :disabled="disabled"
+      :placeholder="placeholder"
+      :clearable="clearable"
+      @clear="handleClear"
+    />
     <!-- 下拉框的各个选项 -->
     <div class="xp-select-dropdown">
       <div class="no-options" v-show="options.length === 0">
@@ -14,9 +22,9 @@
           'is-active': modelValue === item.value,
           'is-disabled': item.disabled
         }"
-        :key="item.value"
         @click="handleOptionClick(item)"
-      >
+        :key="item.value"
+        >
         {{ item.label }}
       </span>
     </div>
@@ -29,14 +37,26 @@ import { selectProps, selectEmits, useSelect } from "./index.ts";
 const props = defineProps(selectProps);
 const emits = defineEmits(selectEmits);
 
-const { options, modelValue, modelLable } = useSelect(props,emits)
+const { 
+  options, 
+  modelValue, 
+  modelLable, 
+  disabled, 
+  placeholder, 
+  clearable 
+} = useSelect(props,emits)
 // 选中某一个
 const handleOptionClick = (item) => {
-  // console.log('点击的item',item.value);
+  console.log('点击的item',item.value);
   if(!item.disabled) {
-    emits('update:modelValue', item.value)
-    emits('change',item.value)
+    emits("update:modelValue", item.value);
+    emits("change", item.value);
   }
+}
+// 清除
+const handleClear = (e) => {
+  emits('update:modelValue',"")
+  emits('clear',"")
 }
 // 所有的options / ComputedRef<"x">
 // console.log('222',options,modelValue);
@@ -64,9 +84,9 @@ export default {
     top: 48px;
     width: 100%;
     opacity: 0;
-    height: 200px;
-    width: 80%;
-    pointer-events: none;
+    height: 0px;
+    width: 100%;
+    // pointer-events: none;
 
 
     background-color: #fff;
@@ -82,6 +102,7 @@ export default {
       justify-content: center;
     }
     .xp-select-option {
+      z-index:1000;
       display: inline-block;
       cursor: pointer;
       min-width: 100%;
@@ -111,7 +132,7 @@ export default {
     opacity: 1;
     height: 300px;
     width: 100%;
-    pointer-events: auto;
+    // pointer-events: auto;
   }
 }
 </style>

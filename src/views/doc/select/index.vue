@@ -3,6 +3,12 @@
     <h1>Select 选择器</h1>
     <div class="preview-wrapper">
       <Preview :component="SelectPreview1" />
+      <Preview :component="SelectPreview2 " />
+      <Preview :component="SelectPreview3 " />
+      <Preview :component="SelectPreview4 " />
+
+
+
     </div>
   </div> 
 </template>
@@ -12,6 +18,9 @@ import Preview from '../../../components/Preview.vue';
 import PrevAndNext from '../../../components/PrevAndNext.vue'
 import Doc from '../../../components/Doc.vue'
 import SelectPreview1 from "./SelectPreview1.preview.vue";
+import SelectPreview2 from "./SelectPreview2.preview.vue";
+import SelectPreview3 from "./SelectPreview3.preview.vue";
+import SelectPreview4 from "./SelectPreview4.preview.vue";
 
 
 </script>

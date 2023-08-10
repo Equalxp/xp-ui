@@ -9,10 +9,21 @@ export const selectProps = {
     type: Array,
     default: () => [],
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  placeholder: {
+    type: String,
+  },
+  clearable: {
+    type: Boolean,
+    default: false,
+  },
 };
 
 // 修改传过来的modelValue props 的(修改)事件
-export const selectEmits = ['update:modelValue','change'];
+export const selectEmits = ['update:modelValue','change','clear'];
 
 export const useSelect = (props, emits) => {
   const options = computed(() => props.options)
@@ -22,13 +33,32 @@ export const useSelect = (props, emits) => {
   console.log('value对应的值',props.options.find((v) => v.value === props.modelValue))
   
   // options中v-model(modelValue)对应的那一个label值
+  // const modelLable = computed({
+  //   get() {
+  //     const item = props.options.find((v) => v.value === props.modelValue)
+  //     return item ? item.label : ""
+  //   },
+  //   set() {}
+  // });
+
   const modelLable = computed(() => {
-    const item = props.options.find((v) => v.value === props.modelValue)
+    const item = props.options.find((v) => v.value === props.modelValue);
     return item ? item.label : "";
-  });
+  })
+  const disabled = computed(() => props.disabled)
+  
+  const placeholder = computed(() => props.placeholder);
+
+  const clearable = computed(() => props.clearable);
+
   return {
     options,
     modelValue,
-    modelLable
+    modelLable,
+    disabled,
+    placeholder,
+    clearable,
+
+
   };
 }

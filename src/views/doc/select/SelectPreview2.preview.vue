@@ -1,4 +1,4 @@
-<preview>基础用法</preview>
+<preview>禁用选项</preview>
 <template>
   <xp-select
     id="select"
@@ -10,17 +10,19 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-const value = ref("3");
+const value = ref("1");
 // 下拉框的选项
 // const options = []
 const options = [
   {
     label: "再见杰克",
     value: "1",
+    
   },
   {
     label: "西湖",
     value: "2",
+    disabled: true,
   },
   {
     label: "为你唱歌",
@@ -29,6 +31,7 @@ const options = [
   {
     label: "公路之歌",
     value: "4",
+    disabled: true,
   },
   {
     label: "愿爱无忧",
@@ -45,10 +48,12 @@ const options = [
   {
     label: "十万嬉皮",
     value: "8",
+    disabled: true,
   },
   {
     label: "大石碎胸口",
     value: "9",
+    disabled: true,
   },
   {
     label: "山雀",
