@@ -19,6 +19,8 @@ import XpMessage from './message/index.ts'
 import XpAlert from './alert/index.vue'
 import XpAffix from './affix/index.vue'
 import XpBacktop from './backtop/index.vue'
+import XpBreadcrumb from './breadcrumb/breadcrumb.vue'
+import XpBreadcrumbItem from './breadcrumb/breadcrumb-item.vue'
 
 
 
@@ -42,6 +44,8 @@ export {
   XpAlert,
   XpAffix,
   XpBacktop,
+  XpBreadcrumb,
+  XpBreadcrumbItem,
 
 
 
@@ -67,7 +71,8 @@ const components = [
   XpAlert,
   XpAffix,
   XpBacktop,
-
+  XpBreadcrumb,
+  XpBreadcrumbItem,
 
   
 

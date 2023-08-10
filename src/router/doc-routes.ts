@@ -102,6 +102,11 @@ const docMenus = {
       name: "回到顶部 Backtop" 
     },
     { 
+      path: "breadcrumb",
+      component: () => import('../views/doc/breadcrumb/index.vue'),
+      name: "面包屑 Breadcrumb" 
+    },
+    { 
       path: "tabs",
       component: () => import('../views/doc/tabs/index.vue'),
       name: "标签页 Tabs" 
