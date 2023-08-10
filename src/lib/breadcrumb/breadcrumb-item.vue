@@ -15,7 +15,7 @@
       class="xp-breadcrumb-separator"
       :size="12"
     >
-      <component :is="parent.separatorIcon" />
+      <component :is="parent?.separatorIcon" />
     </xp-icon>
     <span v-else class="xp-breadcrumb-separator">
       {{ parent.separator }}
@@ -38,7 +38,7 @@ const props = defineProps({
   },
 });
 const router = useRouter();
-// 取得props的值
+// 取得父组件的props的值
 const parent = inject("XpBreadcrumbKey", undefined);
 
 // 路由跳转
