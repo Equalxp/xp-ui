@@ -15,8 +15,8 @@
       <Doc title="Input 方法" type="methods" :body="methodsDoc" />
       
       <PrevAndNext
-        :prev="{ path: '/doc/checkbox', name: '复选框 Checkbox' }"
-        :next="{ path: '/doc/radio', name: '单选框 Radio' }"
+        :prev="{ path: '/doc/checkbox', name: '多选框 Checkbox' }"
+        :next="{ path: '/doc/select', name: '选择器 Select' }"
       />
     </div>
   </div>

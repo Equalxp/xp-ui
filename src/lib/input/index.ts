@@ -2,6 +2,7 @@ import { computed, ref } from "vue";
 
 // 规定props值的类型和默认值
 export const inputProps = {
+  // 子组件v-model传的值
   modelValue: {
     type: [Number, String],
   },
@@ -12,6 +13,7 @@ export const inputProps = {
     type: Boolean,
     default: false,
   },
+  // 可清除
   clearable: {
     type: Boolean,
     default: false,
@@ -20,6 +22,7 @@ export const inputProps = {
     type: Boolean,
     default: false,
   },
+  // text / password
   type: {
     type: String,
     default: "text",
@@ -36,6 +39,7 @@ export const inputProps = {
   },
 };
 
+// 自定义事件
 export const inputEmit = [
   "update:modelValue",
   "input",
@@ -56,12 +60,12 @@ export const useInput = (props, emits) => {
   const readonly = computed(() => props.readonly);
 
   const type = computed(() => {
-    // showPassword表示是这个框是否是password type
+    // showPassword表示是这个框是否是password的type
     // visible代表密码显示与否
     return showPassword.value
       ? passwordVisible.value
-        ? "text"
-        : "password"
+        ? "text" // 看见密码
+        : "password" // 看不见密码
       : props.type;
   });
 
@@ -77,7 +81,7 @@ export const useInput = (props, emits) => {
     "xp-input-prefix": props.prefixIcon,
   }));
 
-  // 处理v-model的值
+  // 处理v-model的值 变成string类型
   const nativeInputValue = computed(() =>
     props.modelValue === null || props.modelValue === undefined
       ? ""

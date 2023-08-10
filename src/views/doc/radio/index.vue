@@ -23,8 +23,8 @@
       />
 
       <PrevAndNext
-        :prev="{ path: '/doc/input', name: 'Input 输入框' }"
-        :next="{ path: '/doc/select', name: '选择器 Select' }"
+        :prev="{ path: '/doc/switch', name: '开关 Switch' }"
+        :next="{ path: '/doc/alert', name: '提示 Alert' }"
       />
     </div>
   </div>

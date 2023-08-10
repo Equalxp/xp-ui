@@ -7,8 +7,8 @@
     <Preview :component="SwitchPreview3" />
     <Doc title="属性" type="prop" :body="propDoc" />
     <PrevAndNext
-      :prev="{ path: '/doc/select', name: 'Select 选择器' }"
-      :next="{ path: '/doc/alert', name: '提示 Alert' }"
+      :prev="{ path: '/doc/select', name: '选择器 Select' }"
+      :next="{ path: '/doc/radio', name: '单选框 Radio' }"
     />
   </div>
 

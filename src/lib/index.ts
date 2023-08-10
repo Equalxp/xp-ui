@@ -21,6 +21,7 @@ import XpAffix from './affix/index.vue'
 import XpBacktop from './backtop/index.vue'
 import XpBreadcrumb from './breadcrumb/breadcrumb.vue'
 import XpBreadcrumbItem from './breadcrumb/breadcrumb-item.vue'
+import XpSelect from './select/index.vue'
 
 
 
@@ -46,7 +47,8 @@ export {
   XpBacktop,
   XpBreadcrumb,
   XpBreadcrumbItem,
-
+  XpSelect,
+  
 
 
 }
@@ -73,7 +75,7 @@ const components = [
   XpBacktop,
   XpBreadcrumb,
   XpBreadcrumbItem,
-
+  XpSelect,
   
 
 ]

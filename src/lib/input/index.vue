@@ -29,7 +29,7 @@
       </span>
       <!-- 图标显示在input框后面 -->
       <span class="xp-input-suffix-icon">
-        <!-- icon -->
+        <!-- suffix icon -->
         <xp-icon
           v-if="suffixIcon"
           class="suffix-icon"
@@ -38,7 +38,7 @@
         >
           <component :is="suffixIcon" />
         </xp-icon>
-        <!-- clearable -->
+        <!-- 可清空按钮 clearable+有值 -->
         <div
           class="close-icon"
           v-if="clearable && nativeInputValue.length > 0 && !disabled"
@@ -48,7 +48,7 @@
             <CloseCircleOutline />
           </xp-icon>
         </div>
-        <!-- password -->
+        <!-- password showPassword+非禁用-->
         <div
           class="password-icon"
           v-if="showPassword && !disabled"
@@ -91,7 +91,7 @@ const props = defineProps(inputProps)
 // ()传入自定义事件名数组 接收传来的函数
 const emits = defineEmits(inputEmit)
 
-const { 
+const {
   disabled,
   classes,
   clearable,
@@ -110,18 +110,23 @@ const input = ref<HTMLInputElement>();
 const textarea = ref<HTMLTextAreaElement>();
 const inputOrTextarea = computed(() => input.value || textarea.value);
 
+// input输入触发这个函数 函数拿到input框的内容 然后触发返回v-model
 const handleChange = (e:event) => {
+  console.log('handlechange',e.target.value);
+  // e.target.value -> input框的内容
   const { value } = e.target as TargetElement
   if(value === nativeInputValue.value) {
     return
   }
   // 触发函数 且传递值 
-  // v-model值+value值
+  // v-model值 + value值
   emits("update:modelValue", value);
   emits("input", value);
 }
 
+// 清空输入框的内容
 const hanldeClear = () => {
+  // 触发事件 传值给v-model 值是"""
   emits("update:modelValue", "");
   emits("input", "");
   emits("clear", "");
@@ -151,6 +156,7 @@ const blur = () => {
   });
 };
 
+// 点击事件显示密码
 const handlePasswordVisible = () => {
   // visible
   passwordVisible.value = !passwordVisible.value;
@@ -238,6 +244,7 @@ $active-color: #18a058;
     }
   }
 
+  // 禁用
   &.is-disabled {
     .xp-input-inner {
       cursor: not-allowed;
@@ -262,13 +269,16 @@ $active-color: #18a058;
     justify-content: center;
     align-items: center;
   }
+  // 后缀
   .xp-input-suffix-icon {
     right: 5px;
   }
+  // 前缀
   .xp-input-prefix-icon {
     left: 5px;
   }
 
+  // 清空按钮 X
   .close-icon,
   .password-icon {
     display: none;
@@ -287,7 +297,7 @@ $active-color: #18a058;
 
     .xp-icon {
       color: #dcdfe6;
-      
+      // hover在icon上
       &:hover {
         color: #c0c4cc;
       }

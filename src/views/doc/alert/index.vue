@@ -12,8 +12,8 @@
       <Doc title="事件" type="event" :body="eventDoc" />
       <Doc title="插槽" type="slot" :body="slotDoc" />
       <PrevAndNext
-        :prev="{ path: '/doc/switch', name: '开关 Switch' }"
-        :next="{ path: '/doc/dialog', name: '对话框 Dialog' }"
+        :prev="{ path: '/doc/radio', name: '单选框 Radio' }"
+        :next="{ path: '/doc/message', name: '消息框 Message' }"
       />
 
     </div>

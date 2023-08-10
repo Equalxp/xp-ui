@@ -66,6 +66,11 @@ const docMenus = {
       component: () => import('../views/doc/input/index.vue')
     },
     {
+      path: 'select',
+      name: '选择器 Select',
+      component: () => import('../views/doc/select/index.vue')
+    },
+    {
       path: 'switch',
       name: '开关 Switch',
       component: () => import('../views/doc/switch/index.vue')
