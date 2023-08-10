@@ -1,4 +1,8 @@
 <template>
+  <transition
+    leave-active-class="animate__bounceOut"
+    enter-active-class="animate__bounceIn"
+  >
   <div
     v-if="visible"
     class="xp-backtop"
@@ -14,6 +18,7 @@
       </xp-icon>
     </slot>
   </div>
+</transition>
 </template>
 
 <script setup lang="ts">
@@ -74,13 +79,13 @@ const scrollToTop = () => {
   rAF(frameFunc);
 };
 
-// 
+// 事件处理函数
 const handleClick = (event: MouseEvent) => {
   scrollToTop();
   emits('click', event)
 }
 
-// 
+// 判断是否达到可见的标准
 const handleScroll = () => {
   if (el.value) visible.value = el.value.scrollTop >= props.visibilityHeight;
 };
@@ -101,6 +106,7 @@ onMounted(() => {
   }
 });
 
+// 移除监听
 onBeforeUnmount(() => {
   container.value.removeEventListener("scroll", handleScrollThrottled);
 });
