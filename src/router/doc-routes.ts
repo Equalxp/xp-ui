@@ -90,6 +90,11 @@ const docMenus = {
       component: () => import('../views/doc/alert/index.vue')
     },
     {
+      path: 'dialog',
+      name: '对话框 Dialog',
+      component: () => import('../views/doc/dialog/index.vue')
+    },
+    {
       path: 'message',
       name: '消息框 Message',
       component: () => import('../views/doc/message/index.vue')
