@@ -6,7 +6,6 @@
       <Preview :component="AvatarPreview1" />
       <Preview :component="AvatarPreview2" />
       <Preview :component="AvatarPreview3" />
-      <Preview :component="AvatarPreview4" />
       <Doc title="属性" type="prop" :body="propsDoc" />
       <Doc title="事件" type="event" :body="eventDoc" />
       <Doc title="插槽" type="slot" :body="slotDoc" />
@@ -23,7 +22,6 @@ import Preview from "@/components/Preview.vue";
 import AvatarPreview1 from "./AvatarPreview1.preview.vue";
 import AvatarPreview2 from "./AvatarPreview2.preview.vue";
 import AvatarPreview3 from "./AvatarPreview3.preview.vue";
-import AvatarPreview4 from "./AvatarPreview4.preview.vue";
 
 
 const propsDoc = [
