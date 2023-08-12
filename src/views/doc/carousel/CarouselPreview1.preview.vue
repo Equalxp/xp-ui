@@ -1,7 +1,7 @@
 <preview>基础使用</preview>
 <template>
   <div class="container">
-    <XpCarousel
+    <xp-carousel
       :autoplay="true"
       :duration="3000"
       :initial="0"
@@ -12,7 +12,7 @@
       <XpCarouselItem v-for="(item, index) of carouselData" :key="index">
         <img :src="item.img_name" />
       </XpCarouselItem>
-    </XpCarousel>
+    </xp-carousel>
   </div>
 </template>
 <script setup lang="ts">

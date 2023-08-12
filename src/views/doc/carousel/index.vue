@@ -7,7 +7,7 @@
       <Doc title="Carousel 属性" type="prop" :body="carouselPropDoc" />
       <PrevAndNext 
         :prev="{ path: '/doc/ellipsis', name: 'Ellipsis 文本省略' }"
-        :next="{ path: '/doc/calendar', name: '日历 Calendar' }" 
+        :next="{ path: '/doc/checkbox', name: '多选框 Checkbox' }" 
       />
     </div>
   </div>

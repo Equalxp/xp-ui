@@ -26,7 +26,6 @@ import XpDialog from './dialog/index.vue'
 import { openDialog } from "./dialog/openDialog";
 import XpCarousel from './carousel/carousel.vue'
 import XpCarouselItem from './carousel/carouselItem.vue'
-import XpCalendar from './calendar/index.vue'
 
 
 
@@ -57,7 +56,6 @@ export {
   openDialog,
   XpCarousel,
   XpCarouselItem,
-  XpCalendar,
 
 
 
