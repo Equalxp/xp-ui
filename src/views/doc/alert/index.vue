@@ -13,7 +13,7 @@
       <Doc title="插槽" type="slot" :body="slotDoc" />
       <PrevAndNext
         :prev="{ path: '/doc/radio', name: '单选框 Radio' }"
-        :next="{ path: '/doc/message', name: '消息框 Message' }"
+        :next="{ path: '/doc/dialog', name: '对话框 Dialog' }"
       />
 
     </div>

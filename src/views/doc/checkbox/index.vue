@@ -16,7 +16,8 @@
       <Doc title="Checkbox-group 事件" type="event" :body="checkboxGroupEventDoc" />
       <Doc title="Checkbox-group 插槽" type="slot" :body="checkboxGroupSlotDoc" :header="['插槽名', '说明', '子标签']" />
 
-      <PrevAndNext :prev="{ path: '/doc/ellipsis', name: 'Ellipsis 文本省略' }"
+      <PrevAndNext 
+        :prev="{ path: '/doc/carousel', name: 'Carousel 轮播图' }"
         :next="{ path: '/doc/input', name: '输入框 Input' }" />
     </div>
   </div>

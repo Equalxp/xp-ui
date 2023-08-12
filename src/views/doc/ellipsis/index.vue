@@ -10,7 +10,7 @@
       <Doc title="插槽" type="slot" :body="slotDoc" />
       <PrevAndNext
         :prev="{ path: '/doc/tag', name: '标签 Tag' }"
-        :next="{ path: '/doc/checkbox', name: '复选框 Checkbox' }"
+        :next="{ path: '/doc/carousel', name: '轮播图 Carousel' }"
       />
     </div>
   </div>

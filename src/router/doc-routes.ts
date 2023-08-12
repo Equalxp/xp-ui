@@ -50,9 +50,12 @@ const docMenus = {
       name: '文本省略 Ellipsis',
       component: () => import('../views/doc/ellipsis/index.vue')
     },
-    // {
-      
-    // }
+    {
+      path: 'carousel',
+      name: '轮播图 Carousel',
+      component: () => import('../views/doc/carousel/index.vue')
+    },
+
   ],
   数据录入组件: [
     {

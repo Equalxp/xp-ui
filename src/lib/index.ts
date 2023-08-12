@@ -24,6 +24,9 @@ import XpBreadcrumbItem from './breadcrumb/breadcrumb-item.vue'
 import XpSelect from './select/index.vue'
 import XpDialog from './dialog/index.vue'
 import { openDialog } from "./dialog/openDialog";
+import XpCarousel from './carousel/carousel.vue'
+import XpCarouselItem from './carousel/carouselItem.vue'
+
 
 
 // 支持组件的单一引入
@@ -51,6 +54,8 @@ export {
   XpSelect,
   XpDialog,
   openDialog,
+  XpCarousel,
+  XpCarouselItem,
 
 
 
@@ -81,7 +86,9 @@ const components = [
   XpSelect,
   XpDialog,
   openDialog,
-  
+  XpCarousel,
+  XpCarouselItem,
+
   
 
 ]

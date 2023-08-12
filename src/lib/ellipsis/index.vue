@@ -1,5 +1,10 @@
 <template>
-  <div @click="toggle" class="xp-ellipsis" :class="classes" :style="styles">
+  <div 
+    @click="toggle" 
+    class="xp-ellipsis" 
+    :class="classes" 
+    :style="styles"
+  >
     <slot></slot>
   </div>
 </template>
@@ -59,6 +64,7 @@ export default {
   &.xp-ellipsis-line-clamp {
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    line-height: 1.5;
   }
 
   &.xp-ellipsis-expand-trigger {
