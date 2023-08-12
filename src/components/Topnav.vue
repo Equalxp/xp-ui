@@ -18,8 +18,7 @@
       <!-- 开启router-link的严格模式 -->
       <router-link exact to="/home">首页</router-link>
       <router-link to="/doc">文档</router-link>
-      <a href="https://github.com/coderyjw/jw-ui" target="_blank">GitHub</a>
-      <span>0.0.9</span>
+      <a href="https://github.com/Equalxp/xp-ui" target="_blank">GitHub</a>
     </div>
   </div>
 </template>
@@ -90,11 +89,6 @@ const getHome = () => {
     .router-link-active {
       color: rgb(24, 160, 88);
       border-bottom: 1px solid;
-    }
-
-    span {
-      color: rgb(51, 54, 57);
-      font-size: 17px;
     }
   }
 
