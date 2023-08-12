@@ -88,7 +88,6 @@ const components = [
   openDialog,
   XpCarousel,
   XpCarouselItem,
-  XpCalendar,
   
 
 ]
