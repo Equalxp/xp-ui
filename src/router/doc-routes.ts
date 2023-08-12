@@ -55,6 +55,12 @@ const docMenus = {
       name: '轮播图 Carousel',
       component: () => import('../views/doc/carousel/index.vue')
     },
+    {
+      path: 'calendar',
+      name: '日历 Calendar',
+      component: () => import('../views/doc/calendar/index.vue')
+    },
+    
 
   ],
   数据录入组件: [

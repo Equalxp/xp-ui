@@ -4,8 +4,11 @@
     <p>图片轮流播放给你看</p>
     <div class="preview-wrapper">
       <Preview :component="CarouselPreview1"></Preview>
-
       <Doc title="Carousel 属性" type="prop" :body="carouselPropDoc" />
+      <PrevAndNext 
+        :prev="{ path: '/doc/ellipsis', name: 'Ellipsis 文本省略' }"
+        :next="{ path: '/doc/calendar', name: '日历 Calendar' }" 
+      />
     </div>
   </div>
 </template>
